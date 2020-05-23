@@ -66,6 +66,8 @@ module.exports = appInfo => {
       domainWhiteList: [
         'http://localhost:8080',
         'http://192.168.3.6:8080',
+        'http://www.cink.club:8088',
+        'http://cink.club:8088',
       ],
     },
   };

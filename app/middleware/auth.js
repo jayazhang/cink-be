@@ -5,7 +5,10 @@ module.exports = () => {
     const whiteUrls = [
       '/api/user/login',
       '/api/user/register',
-      '/api/auth/isLogin',
+      '/api/user/isLogin',
+      '/api/news/inset',
+      '/api/news/list',
+      '/api/news/detail',
     ];
 
     // 如果ctx.url在白名单中
@@ -14,10 +17,7 @@ module.exports = () => {
     if (!isWhiteUrl) {
       console.log('authLogin', ctx.session.user);
       if (!ctx.session.user) {
-        ctx.error({
-          success: false,
-          status: 0,
-        }); // 让用户去登录
+        ctx.redirct('/user/login'); // 让用户去登录
       } else {
         console.log('auth ok');
         await next();

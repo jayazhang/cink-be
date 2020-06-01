@@ -3,6 +3,10 @@ const moment = require('moment');
 const BaseController = require('./BaseController');
 
 class NewsController extends BaseController {
+  async delete() {
+    const { service } = this;
+    await service.news.delete(1000);
+  }
   async detail() {
     const { service, ctx } = this;
     const tags = await service.tags.list();
@@ -17,10 +21,12 @@ class NewsController extends BaseController {
   }
 
   async list() {
-    const { service } = this;
-    const { limit = 10, offset = 0 } = this.ctx.request.query;
-    const tags = await service.tags.list();
-    let news = await service.news.list(+limit, +offset);
+    const { service, ctx } = this;
+    const { limit = 10, offset = 0 } = ctx.request.query;
+    const tags = ctx.session.user.tags.split(',');
+    let news = await service.news.list(+limit, +offset, {
+      tag_id: tags,
+    });
     news = news.map(item => {
       tags.forEach(tag => {
         if (+tag.id === +item.tag_id) {
@@ -56,6 +62,7 @@ class NewsController extends BaseController {
       create_time: moment().format('YYYY-MM-DD HH:mm:ss'),
       update_time: moment().format('YYYY-MM-DD HH:mm:ss'),
     });
+    this.success();
   }
 }
 

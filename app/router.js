@@ -16,6 +16,10 @@ module.exports = async app => {
   router.post('/api/news/inset', controller.news.insetNews);
   router.get('/api/news/list', controller.news.list);
   router.get('/api/news/detail', controller.news.detail);
+  router.get('/api/news/delete', controller.news.delete);
+
+  router.post('/api/msg/insert', controller.msg.insert);
+  router.get('/api/msg/list', controller.msg.list);
 
   router.post('/api/user/register', controller.user.register);
   router.post('/api/user/login', controller.user.login);

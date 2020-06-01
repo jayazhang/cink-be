@@ -9,6 +9,7 @@ module.exports = () => {
       '/api/news/inset',
       '/api/news/list',
       '/api/news/detail',
+      '/api/news/delete',
     ];
 
     // 如果ctx.url在白名单中

@@ -26,4 +26,9 @@ module.exports = async app => {
   router.post('/api/user/register', controller.user.register);
   router.post('/api/user/login', controller.user.login);
   router.get('/api/user/isLogin', controller.user.isLogin);
+
+  router.get('/api/comment/list/article', controller.comment.getListByArticleId);
+  router.get('/api/comment/list/user', controller.comment.getListByUserId);
+  router.post('/api/comment/add', controller.comment.addComment);
+
 };

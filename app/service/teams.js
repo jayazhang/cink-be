@@ -11,6 +11,16 @@ class TeamsService extends Service {
   async set(userId, teamsIds) {
     await this.app.mysql.update('users', { id: userId, teams: teamsIds });
   }
+
+  async add(data) {
+    const team = await this.app.mysql.insert('teams', data);
+    return team;
+  }
+
+  async find(name) {
+    const team = await this.app.mysql.get('teams', { name });
+    return team;
+  }
 }
 
 module.exports = TeamsService;

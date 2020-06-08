@@ -12,6 +12,8 @@ module.exports = async app => {
 
   router.get('/api/teams', controller.teams.list);
   router.post('/api/teams/set', controller.teams.setTeam);
+  router.post('/api/teams/add', controller.teams.createTeam);
+  router.post('/api/teams/join', controller.teams.joinTeam);
 
   router.post('/api/news/inset', controller.news.insetNews);
   router.get('/api/news/list', controller.news.list);

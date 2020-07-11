@@ -7,6 +7,8 @@ module.exports = async app => {
   const { router, controller } = app;
   router.get('/', controller.home.index);
 
+  router.get('/api/hooks/fe', controller.hooks.fe);
+
   router.get('/api/tags', controller.tags.list);
   router.post('/api/tags/set', controller.tags.setTag);
 

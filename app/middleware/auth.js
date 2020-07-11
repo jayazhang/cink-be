@@ -10,6 +10,7 @@ module.exports = () => {
       '/api/news/list',
       '/api/news/detail',
       '/api/news/delete',
+      '/api/hooks/fe',
     ];
 
     // 如果ctx.url在白名单中
